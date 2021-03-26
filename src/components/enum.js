@@ -4,12 +4,16 @@ import Result from "./result";
 
 const WekaWrapper = styled.div``;
 class Enum extends Component {
-  state = {
-    weight: "",
-    height: "",
-    result: "",
-    displayResult: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      weight: "",
+      height: "",
+      result: "",
+      displayResult: false,
+    };
+  }
 
   handleWeight = (e) => {
     this.setState({
@@ -54,9 +58,16 @@ class Enum extends Component {
           id="height"
           onChange={this.handleHeight}
         />
-        <button type="submit" onClick={this.handleCal}>
+        <button
+          type="submit"
+          onClick={(e) => {
+            this.handleCalc();
+            this.handleShow();
+          }}
+        >
           Calculate
         </button>
+        {/* <Result result={this.state.result} /> */}
         {this.state.displayResult ? (
           <Result result={this.state.result} />
         ) : null}
