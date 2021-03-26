@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
     margin:0;
   font-family: 'Roboto', sans-serif;
+    // background-color:#92efe4;
+    background-color:#D4F1F4;
+    box-sizing:border-box;
   }
 `;
 export default GlobalStyle;

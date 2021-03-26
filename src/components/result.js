@@ -5,7 +5,11 @@ const Div = styled.div`
   padding: 15px;
   // width: 40%;
   border-radius: 5px;
-  margin: 0 auto;
+  // margin: 0 auto;
+
+  // @media (min-width: 225px) {
+  //   width: 40%;
+  // }
 `;
 const Result = (props) => {
   const { result } = props;
