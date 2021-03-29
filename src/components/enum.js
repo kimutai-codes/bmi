@@ -39,7 +39,7 @@ class Enum extends Component {
       height: "",
       result: "",
       displayResult: false,
-      unit: "english",
+      unit: "",
     };
   }
 
@@ -54,7 +54,13 @@ class Enum extends Component {
     });
   };
   handleCalc = () => {
-    const r = this.state.weight / (this.state.height / 100) ** 2;
+    var r;
+    if (this.state.unit === "metric") {
+      r = this.state.weight / (this.state.height / 100) ** 2;
+    } else {
+      var rr = this.state.weight / this.state.height ** 2;
+      r = rr * 703;
+    }
     const result = Math.round(r * 10) / 10;
     console.log(result);
     this.setState({
