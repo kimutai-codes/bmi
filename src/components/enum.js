@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Result from "./result";
+import Metric from "./metric";
 
 const WekaWrapper = styled.div`
   margin: 0 auto;
@@ -24,6 +25,9 @@ const Button = styled.button`
   border-radius: 5px;
   padding: 4px;
   margin: 2px 0px;
+`;
+const Radio = styled.input`
+  margin: 4px;
 `;
 class Enum extends Component {
   constructor(props) {
@@ -63,25 +67,16 @@ class Enum extends Component {
   render() {
     return (
       <WekaWrapper>
-        <p />
-        Weight:
-        <input
-          type="text"
-          placeholder="Enter your weight (kg)"
-          id="weight"
-          value={this.state.weight}
-          onChange={this.handleWeight}
+        <label htmlFor="metric">Metric</label>
+        <Radio type="radio" name="units" id="metric" />
+        <label htmlFor="english">English</label>
+        <Radio type="radio" name="units" id="english" />
+        <Metric
+          height={this.state.height}
+          weight={this.props.weight}
+          handleHeight={this.handleHeight}
+          handleWeight={this.handleWeight}
         />
-        <p />
-        Height:
-        <input
-          type="text"
-          placeholder="Enter your height (cm)"
-          value={this.state.height}
-          id="height"
-          onChange={this.handleHeight}
-        />
-        <br />
         <Button
           type="submit"
           onClick={() => {
