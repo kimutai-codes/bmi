@@ -1,5 +1,3 @@
-import Button from "./enum";
-import Result from "./result";
 const Metric = (props) => {
   const { weight, height } = props;
   // console.log(props);
@@ -10,7 +8,7 @@ const Metric = (props) => {
       <input
         type="text"
         placeholder="Enter your weight (kg)"
-        id="weight"
+        id="mweight"
         value={weight}
         onChange={props.handleWeight}
       />
@@ -20,7 +18,7 @@ const Metric = (props) => {
         type="text"
         placeholder="Enter your height (cm)"
         value={height}
-        id="height"
+        id="mheight"
         onChange={props.handleHeight}
       />
       <br />

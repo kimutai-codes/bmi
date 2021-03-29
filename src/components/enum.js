@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Result from "./result";
 import Metric from "./metric";
+import English from "./eng";
 
 const WekaWrapper = styled.div`
   margin: 0 auto;
@@ -38,6 +39,7 @@ class Enum extends Component {
       height: "",
       result: "",
       displayResult: false,
+      unit: "english",
     };
   }
 
@@ -64,19 +66,46 @@ class Enum extends Component {
       displayResult: true,
     });
   };
+  handleUnit = (e) => {
+    this.setState({
+      unit: e.target.value,
+    });
+  };
   render() {
     return (
       <WekaWrapper>
         <label htmlFor="metric">Metric</label>
-        <Radio type="radio" name="units" id="metric" />
-        <label htmlFor="english">English</label>
-        <Radio type="radio" name="units" id="english" />
-        <Metric
-          height={this.state.height}
-          weight={this.props.weight}
-          handleHeight={this.handleHeight}
-          handleWeight={this.handleWeight}
+        <Radio
+          type="radio"
+          name="unit"
+          value="metric"
+          id="metric"
+          onClick={this.handleUnit}
+          defaultChecked
         />
+        <label htmlFor="english">English</label>
+        <Radio
+          type="radio"
+          name="unit"
+          value="english"
+          id="english"
+          onClick={this.handleUnit}
+        />
+        {this.state.unit === "english" ? (
+          <English
+            height={this.state.height}
+            weight={this.props.weight}
+            handleHeight={this.handleHeight}
+            handleWeight={this.handleWeight}
+          />
+        ) : (
+          <Metric
+            height={this.state.height}
+            weight={this.props.weight}
+            handleHeight={this.handleHeight}
+            handleWeight={this.handleWeight}
+          />
+        )}
         <Button
           type="submit"
           onClick={() => {
